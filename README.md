@@ -1,3 +1,5 @@
+![Build Status](https://travis-ci.org/DuaneGarber/tennisScoring.svg?branch=master)
+
 # To Run
 Execute `npm install`
 Execute `node app.js` (Requires Node 4.3 or greater)
