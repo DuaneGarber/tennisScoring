@@ -2,12 +2,12 @@
 
 # To Run
 Execute `npm install`
-Execute `node app.js` (Requires Node 4.3 or greater)
+Execute `node app.js` (Requires Node 5.6 or greater)
 
 ## A user defined file may be supplied defining the path as the second arg `node app.js myTestFile.txt`
 
 # To Test
-Execute `npm test` (Requires Node 4.3 or greater)
+Execute `npm test` (Requires Node 5.6 or greater)
 
 # Dependencies
 

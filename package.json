@@ -8,7 +8,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "test": "node tests/tests.js | tap-spec"
+    "test": "node tests/tests.js | tap-spec",
+    "coverage": "istanbul cover tape ./tests/*.js && istanbul check-coverage --statements 90 --functions 100 --lines 90 --branches 80"
   },
   "author": "Duane Garber",
   "license": "MIT",
@@ -16,6 +17,7 @@
     "split": "^1.0.0"
   },
   "devDependencies": {
+    "istanbul": "^0.4.2",
     "tap-spec": "^4.1.1",
     "tape": "^4.4.0"
   },

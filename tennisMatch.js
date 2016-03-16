@@ -107,7 +107,7 @@ function _nextScore (score, pointWinner) {
         return 'WIN';
       } else if (loser === '40') {
         return 'A';
-      } else if (loser === 'A') {
+      } else {
         // Edge case reset loser to 40
         score[pointLoser] = '40';
         return '40';
