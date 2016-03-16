@@ -4,7 +4,7 @@ const TennisMatch = require('./../tennisMatch');
 const util = require('./../util');
 
 test('Failure States', function (t) {
-  t.plan(6);
+  t.plan(8);
 
   let failMatch = new TennisMatch();
   // // Failure States
@@ -25,6 +25,10 @@ test('Failure States', function (t) {
   t.equal(failMatch.point(0), false, 'Bad winner score data');
 
   t.equal(failMatch.isMatchOver(), true, 'Error Ends game');
+
+  t.equal(failMatch.getWinner(), false, 'There is no winner');
+
+  t.equal(failMatch.point(0), false, 'Cannot score points if the game is over');
 
   t.end();
 });
@@ -55,7 +59,7 @@ test('Single Score Tests', function (t) {
   // Need to reset match in testing
   testMatch.init();
   t.equal(testMatch.isMatchOver(), false, 'Init has succeed');
-  t.deepEqual(testMatch.score, ['0', '0'], 'Score has been properly reset');  
+  t.deepEqual(testMatch.score, ['0', '0'], 'Score has been properly reset');
 
   testMatch.score = ['40', '40'];
   testMatch.point(0);
@@ -69,7 +73,7 @@ test('Single Score Tests', function (t) {
   testMatch.point(1);
   t.deepEqual(testMatch.score, ['40', '40'], 'Going from 40-A to Duece (brings players back to deuce)');
 
-  testMatch.score = ['A','40'];
+  testMatch.score = ['A', '40'];
   testMatch.point(0);
   t.deepEqual(testMatch.score, ['WIN', '40'], 'Player One wins after advantage');
 
@@ -80,10 +84,7 @@ test('Single Score Tests', function (t) {
   t.end();
 });
 
-
 test('Game Engine tests', function (t) {
-  let testMatch = new TennisMatch();
-
   t.plan(10);
 
   t.equals(util.processGameLine('0020'), false, 'Error State triggered 2');
@@ -92,7 +93,6 @@ test('Game Engine tests', function (t) {
 
   t.equals(util.processGameLine('0000'), 0, 'Player 1 won');
   t.equals(util.processGameLine('1111'), 1, 'Player 2 won');
-  
   t.equals(util.processGameLine('00002'), 0, 'Player 1 won, before error state');
   t.equals(util.processGameLine('0010'), -1, 'Tie State');
   t.equals(util.processGameLine('01101010101010101010101010101010101010101010101010'), -1, 'Long Tie State');

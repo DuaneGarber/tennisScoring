@@ -7,7 +7,7 @@ const split = require('split'); // https://www.npmjs.com/package/split
 const userDefinedFile = process.argv[2];
 
 // If user supplied a file use that, otherwise use the test data
-const FILE_NAME = userDefinedFile || 'data/tennisinput.txt';
+const FILE_NAME = userDefinedFile || 'sampleData/tennisinput.txt';
 
 // Contains the utility functions extracted for unit testing
 const util = require('./util');
